@@ -28,25 +28,9 @@ def get_class(url, element, sub_element=0):
 # For BBC
 url = "https://www.bbc.com/news"
 clas = "gel-wrap gs-u-pt+"
-url_of_latest ="https://www.bbc.com" + extract_content(url, clas, "div", True)
+url_of_latest ="https://www.bbc.com" #+ extract_content(url, clas, "div", True)
 print("link is: "+url_of_latest)
 
 clas = get_class(url_of_latest, "article")
 print(extract_content(url_of_latest, clas, "article", False))   
 #End of bbc process
-
-#ChatGPT
-
-openai.api_key = "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"
-prompt = "hello there"
-model = "text-davinci-003"
-temperature =0.2
-max_tokens = 10
-response = openai.Completion.create(
-    engine=model,
-    prompt=prompt,
-    temperature=temperature,
-    max_tokens=max_tokens
-)
-
-print(response.choices[0].text.strip())
