@@ -24,7 +24,7 @@ def askChat(question,content):
       "HTTP-Referer": "<>", # Optional. Site URL for rankings on openrouter.ai.
       "X-Title": "<>", # Optional. Site title for rankings on openrouter.ai.
     },
-    model="openai/gpt-3.5-turbo",
+    model="google/gemini-2.0-flash-thinking-exp:free",
     messages=[
       {
         "role": "user",
@@ -76,6 +76,8 @@ def get_formatted_date():
 
 # split the single chatGPT output in 4 chatGPT stories.
 def getStories(data):
+  data.replace("#", "")
+  data.replace("*", "")
   return data.split("Story ")
 
 def generateHTML(stories):
@@ -104,10 +106,10 @@ cnn_output = extract_content(cnn, "scope", "div", False).replace("\n", " ")
 
 #print(cnn_output)
 
-title = askChat("what title would you give for this?", bbc_output + " " + cnn_output)
+title = askChat("based on the given content, could you just give me a single title that will summarise the contains please? Just give me the title", bbc_output + " " + cnn_output)
 print(title)
 
-out = askChat("with the given content could you give me 4 stories that will summarise the content I gave you. Give me each story with a header Story \n", bbc_output + cnn_output)
+out = askChat("with the given content could you give me 4 stories that will summarise the content I gave you, with 400 words each?. Give me each story with a header Story \n", bbc_output + cnn_output)
 stories = getStories(out)
 
 generateHTML(stories)
