@@ -76,8 +76,11 @@ def get_formatted_date():
 
 # split the single chatGPT output in 4 chatGPT stories.
 def getStories(data):
-  data.replace("#", "")
-  data.replace("*", "")
+  start_index = data.find("1: ")
+  if start_index != -1:
+    data = data[start_index:]
+  
+  data = data.replace("#", "").replace("*", "")
   return data.split("Story ")
 
 def generateHTML(stories):
@@ -94,7 +97,8 @@ def generateHTML(stories):
   #file.write(f'<h2>{title1}</h2>\n')
 
   for i in range(len(stories)):
-      file.write(f'<p>{stories[i]}</p>')
+      if stories[i].strip():
+        file.write(f'<p>{stories[i]}</p>')
 
 
   file.write('</article>\n<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.5/lib/darkmode-js.min.js"></script>\n<script  src="script.js"></script>\n</body>\n<script  src="./script.js"></script>\n</body>\n</html>')
