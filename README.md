@@ -42,7 +42,7 @@ The script uses **OpenRouter API** for paraphrasing and summarization as well as
     }
     ```
 4. Replace `"your_openai_api_key_here"` with your actual OpenAI API key.
-5. Replace `"path_to_your_google_credentials.json"` with the path to your Google Cloud credentials JSON file.
+5. Replace `"path_to_your_google_credentials.json"` with the path to your Google Cloud credentials JSON file.(IAM -> Service Accounts -> Create Service. After goto your newly created service and download .json file under Key tab).
 
 ## **Usage**
 ### **Select Language (Default: English)**
