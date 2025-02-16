@@ -107,7 +107,7 @@ def translate_text(text, target_language):
 
 # update html file with news
 def generateHTML(stories, target_language='en'):
-    with open("./web/main.html", "w", encoding='utf-8') as file:
+    with open("./web/index.html", "w", encoding='utf-8') as file:
         file.write('<!DOCTYPE html> \n<html lang="en"> \n<head>\n<meta charset="UTF-8">\n<title>NewsFeed</title>\n<link rel="stylesheet" href="./style.css"> \n</head>\n')
 
         file.write("<body>\n<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif+Caption|PT+Serif:400,700,400italic,700italic|Oswald:400,700' rel='stylesheet' type='text/css'>\n<article>\n")
@@ -131,8 +131,7 @@ bbc_output = extract_content(bbc, get_class(bbc, "article"), "article", False)
 cnn_output = extract_content(cnn, "scope", "div", False).replace("\n", " ")
 
 # print(cnn_output)
-
-title = askChat("based on the given content, could you just give me a single title that will summarise the contains please? Just give me the title", bbc_output + " " + cnn_output)
+title = askChat("based on the given content, could you just give me a generic single title that will summarise the contains please, but also be atractive? Just give me the title", bbc_output + " " + cnn_output)
 print(title)
 
 out = askChat("with the given content could you give me 4 stories that will summarise the content I gave you, with 400 words each?. Give me each story with a header Story \n", bbc_output + cnn_output)
