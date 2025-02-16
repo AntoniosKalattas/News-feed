@@ -33,7 +33,7 @@ pip install beautifulsoup4 requests openai
 The script uses **OpenRouter API** for paraphrasing and summarization as well as **Google Translate API** for translation. Set up your API keys and credentials:
 
 1. Create an account on [OpenRouter](https://openrouter.ai).
-2. Create an account on [Google Cloud](https://cloud.google.com) and enable the Google Translate API.
+2. Create an account on [Google Cloud](https://cloud.google.com) and enable the Google Translate API. (IAM -> Service Accounts -> Create Service. After goto your newly created service and download .json file under Key tab).
 3. Create a `config.json` file in the root directory of the project with the following content:
     ```json
     {
@@ -42,7 +42,7 @@ The script uses **OpenRouter API** for paraphrasing and summarization as well as
     }
     ```
 4. Replace `"your_openai_api_key_here"` with your actual OpenAI API key.
-5. Replace `"path_to_your_google_credentials.json"` with the path to your Google Cloud credentials JSON file.(IAM -> Service Accounts -> Create Service. After goto your newly created service and download .json file under Key tab).
+5. Replace `"path_to_your_google_credentials.json"` with the path to your Google Cloud credentials JSON file.
 
 ## **Usage**
 ### **Select Language (Default: English)**
